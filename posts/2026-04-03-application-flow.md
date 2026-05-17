@@ -17,7 +17,15 @@ After the first stage of planning, I realised that our project should not simply
 
 Our current idea is an interactive Sound Room feature for an indie music community hub. A Sound Room is a user-created space where members can share a track, describe its mood or background, and invite discussion from others. The value is not just the music itself, but the shared interpretation around it: why someone posted it, what feeling it creates, and how other community members respond. This makes the concept more suitable for BlaBla than a generic music forum, because it focuses on a specific community experience rather than copying standard social media features.
 
-To clarify the scope, I started mapping the application flow.![Sound Room application flow diagram](assets/images/sound-room-flow.png) A traditional sitemap felt too limited because it mainly shows page hierarchy. For this project, the important part is not just where pages are located, but what users can do on them. My current structure is:
+To clarify the scope, I started mapping the application flow.flowchart TD
+    A[Home / Sound Room Feed] --> B[Sound Room Detail]
+    A --> C[Create Sound Room]
+    A --> D[Search or Filter Rooms]
+    A --> E[User Profile]
+    B --> F[Listen to Track]
+    B --> G[Post Comment]
+    B --> H[Add Bullet Comment]
+    E --> B A traditional sitemap felt too limited because it mainly shows page hierarchy. For this project, the important part is not just where pages are located, but what users can do on them. My current structure is:
 
 Home / Sound Room Feed → Sound Room Detail → Create Sound Room → Search or Filter Rooms → User Profile
 
