@@ -26,7 +26,7 @@ Home / Community Feed
 → Submit a response or contribution  
 → System saves the input  
 → Updated content is shown back to the user
-![Application flow diagram](/assets/images/sound-room-flow.png)
+![Application flow diagram](assets/images/sound-room-flow.png)
 
 There is also a second related flow:
 
