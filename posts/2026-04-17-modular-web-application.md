@@ -2,7 +2,7 @@
 title: "Turning Pages into a Modular Web Application"
 date: "2026-04-17"
 author: "Jesse Gao"
-description: "This post reflects on how modular design, reusable components, partial views, and MVC can make the prototype easier to maintain."
+summary: "This post reflects on how modular design, reusable components, partial views, and MVC can make the prototype easier to maintain."
 tags:
   - A1
   - modularity
