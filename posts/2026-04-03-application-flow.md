@@ -1,35 +1,38 @@
 ---
-title: From a Music Website to Interactive Sound Rooms
-date: 2026-04-03
+title: Moving from Features to Application Flow
+date: 2026-04-10
 author: Jesse Gao
-summary: This post maps the application flow of the Sound Room prototype and explains how user actions, page structure, and technical constraints shape the project scope.
+summary: This post uses application flow planning to refine the functional requirements, scope, and technical feasibility of my A2 web app prototype.
 tags:
-  - A1
   - application-flow
-  - Sound-Rooms
   - functional-requirements
-  - Week-7
+  - user-flow
+  - scope
 ---
 
-# From a Music Website to Interactive Sound Rooms
+After the first stage of interpreting the BlaBla brief, I realised that listing possible features is not enough to define a strong web application. A feature list can make the project look larger than it really is, but it does not explain how users move through the system or what the application should actually help them complete. At this stage, my focus is to translate early functional requirements into a clearer application flow.
 
-After the first stage of planning, I realised that our project should not simply be a “music website”. A normal website can display artists, playlists, events, or articles, but the BlaBla brief asks for a web application that supports community-specific interaction. This changed how I understood our concept. The important question is no longer only “what music content should we show?” but “what task does the user complete, and how does the system respond?”
+The key shift in my thinking is that a web application is not just a set of pages. A website mainly presents content, but a web application facilitates tasks. Users do not only browse; they interact with a system that responds. This means a normal sitemap is useful, but limited. It can show page hierarchy, but it does not fully show what users can do on each page, what choices they face, or how the system should respond after each action.
 
-Our current idea is an interactive Sound Room feature for an indie music community hub. A Sound Room is a user-created space where members can share a track, describe its mood or background, and invite discussion from others. The value is not just the music itself, but the shared interpretation around it: why someone posted it, what feeling it creates, and how other community members respond. This makes the concept more suitable for BlaBla than a generic music forum, because it focuses on a specific community experience rather than copying standard social media features.
+For the prototype, I think the application should be built around one core user journey: a logged-in member enters the community hub, browses shared content, opens a specific item, and responds through a lightweight interaction. This flow is simple, but it helps define what the prototype must do. The home page should not only introduce the community; it should act as an entry point into current activity. The detail page should not only display content; it should support deeper interaction. A contribution form should not exist as a separate decorative feature; it should connect directly to the community’s shared information.
 
-To clarify the scope, I started mapping the application flow.![Sound Room application flow diagram](assets/images/sound-room-flow.png)
- A traditional sitemap felt too limited because it mainly shows page hierarchy. For this project, the important part is not just where pages are located, but what users can do on them. My current structure is:
+A basic version of the flow can be described like this:
 
-Home / Sound Room Feed → Sound Room Detail → Create Sound Room → Search or Filter Rooms → User Profile
+```mermaid
+flowchart TD
+    A[Home / Community Feed] --> B[Open Shared Item]
+    B --> C[Read Details and Existing Responses]
+    C --> D[Submit a Response or Contribution]
+    D --> E[System Saves Input]
+    E --> B
+    A --> F[Create New Item]
+    F --> E
+```
 
-Sound Room Detail → Listen to Track → Read Comments → Add Comment → Add Bullet Comment
+This flow helped me separate essential requirements from optional ones. The essential requirements are: users need to view shared content, open individual content items, create a new item, and submit a response. These actions are enough to test whether the application supports meaningful community exchange. By contrast, features such as notifications, complex profiles, recommendations, or real-time chat may sound attractive, but they would increase technical complexity without being necessary for the prototype’s core value.
 
-This helped me separate essential functions from attractive but risky extras. The must-have flow is: users open the feed, browse existing Sound Rooms, enter one room, listen to the track, read the discussion, and add a response. A second essential flow is creating a new Sound Room with a title, track link or embedded media, description, and mood tags. Features such as real-time chat, complex recommendations, private messaging, or advanced audio editing are interesting, but they would add too much technical scope for the A2 prototype.
+This also affects technical planning. Viewing content can be handled through GET routes because the user is only requesting information from the server. Creating a new item or submitting a response should use POST because these actions change server-side data. Since the course stack uses MojoJS, SQLite, and HTMX, this structure is feasible: MojoJS can handle routes, SQLite can store shared items and responses, and HTMX can improve small interactions such as submitting a response without refreshing the whole page.
 
-Week 7’s discussion of user flow diagrams and wireflows was useful here. A simple sitemap can show that the feed connects to the detail page, but a user flow shows the actual decision points: does the user want to browse, create, search, or interact? A wireflow would be even more useful later because some interactions may happen without changing the whole page. For example, adding a comment or bullet comment could update only part of the Sound Room Detail page instead of reloading everything.
+The main trade-off is between ambition and clarity. If the prototype tries to support too many pathways, the user flow may become confusing and the implementation may become unstable. A narrower flow is less impressive on the surface, but it is easier to evaluate: I can test whether users understand where to start, whether they can complete the main task, and whether the interface gives clear feedback after an action.
 
-This also connects directly to the required technical stack. MojoJS can handle routes such as the feed page, room detail page, and create-room form. SQLite can store rooms, users, tags, and comments. HTMX can support smaller interactive updates, such as submitting a comment and replacing only the comment section. This means the flow is not just a visual planning exercise; it also helps me understand which routes, templates, and database relationships the prototype will need.
-
-There are still important constraints. Since BlaBla already handles login, I should not rebuild authentication. The prototype also needs to remain responsive, accessible, and realistic within the course timeline. For accessibility, the Sound Room pages need clear form labels, keyboard-accessible buttons, readable contrast, and meaningful text alternatives for embedded content. For evaluation, I can later test whether users understand how to enter a room, create a room, and post a response without extra explanation.
-
-At this stage, the biggest design decision is to prioritise a small but complete interaction loop over a large collection of unfinished features. If users can smoothly discover a Sound Room, understand its context, listen, and respond, then the prototype already demonstrates the core value of the community hub.
+For evaluation, I will later check whether a user can complete the core journey without explanation: enter the hub, find an item, understand its purpose, and contribute. I will also need to check accessibility through clear headings, labelled forms, keyboard-accessible buttons, and readable feedback messages. This planning stage showed me that application flow is not only a design diagram. It is a way to test whether the functional requirements are realistic, connected, and worth building.
