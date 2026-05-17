@@ -14,6 +14,9 @@ tags:
 This week, my thinking shifted from “what pages should the prototype have?” to “how should the system be broken into reusable parts?” Earlier planning helped me understand the basic flow of the application, but Week 8 made me realise that a web application cannot be designed as a group of isolated pages. If every page is built separately, small changes can become painful later. A better approach is to identify what repeats, what changes, and which parts should become reusable components.
 
 The main functional requirement I am focusing on is still the core community interaction: users need to browse shared content, open a detailed view, and perform actions such as submitting, filtering, or responding. These actions may look different depending on the final content type, but the structure is similar. For example, a content card, a detail section, a form, a response list, and a feedback message are all reusable patterns. This means I should not design each screen as a unique layout from scratch. I should design a small system of parts that can be reused across the prototype.
+![Modular MVC architecture diagram](assets/images/modular_mvc_architecture_diagram.png)
+
+*Figure 1. A modular MVC structure showing how layouts, partial views, controllers, models, and database logic can work together.*
 
 Week 8’s discussion of Bootstrap and Material Design helped me think about this trade-off. Bootstrap is useful because it provides ready-made components and speeds up prototyping, but it can also make a project look generic if used without enough adjustment. Material Design is more complete as a design system, but it may be too heavy for a small prototype because it includes detailed rules for colour, spacing, motion, typography, and component behaviour. For my prototype, I do not think the best decision is to copy either system completely. Instead, I want to borrow the idea behind them: consistent components need shared rules.
 
