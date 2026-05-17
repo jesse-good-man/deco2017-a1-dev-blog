@@ -61,3 +61,10 @@ ul.tags-list {
 ul.post-list{
     list-style: none;
 }
+/* Make images fit properly inside blog posts */
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
