@@ -1,6 +1,6 @@
 ---
 title: Moving from Features to Application Flow
-date: 2026-04-10
+date: 2026-04-03
 author: Jesse Gao
 summary: This post uses application flow planning to refine the functional requirements, scope, and technical feasibility of my A2 web app prototype.
 tags:
