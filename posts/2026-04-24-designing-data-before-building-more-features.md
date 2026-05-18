@@ -14,10 +14,16 @@ tags:
 After thinking about application flow and modular structure, I realised that the next problem is not only how the prototype should look, but what information it needs to remember. A web application is different from a static website because the interface should respond to user actions and show content that comes from somewhere. This means the data structure is not just a technical detail. It is part of deciding whether the functional requirements are actually realistic.
 
 The main requirement I am focusing on is the core community workflow: users should be able to browse shared content, open a detailed view, and respond through lightweight interaction. On the screen, this may look like a few simple cards, buttons, forms, and response lists. However, each visible element depends on data. A card may need a title, author, category, short description, date, and link to a detail page. A response area needs the response text, the person who wrote it, the time it was created, and the content item it belongs to. So the interface is not just a layout; it is a view of stored information.
+![Interface to data requirements map](assets/images/data_requirements_map.png)
+
+*Figure 1. Mapping visible interface elements to the data needed behind them.*
 
 This is where the Week 9 work on data design helped me rethink the prototype. Earlier, I could imagine the application as a set of pages and reusable partial views. Now I need to ask what data sits behind those views. If I put everything into one large table, it might seem easier at the beginning, but it would quickly become hard to maintain. User information, shared content, responses, and categories have different purposes, so they should not all be treated as the same kind of data.
 
 The relationship between data also affects the scope of the project. Some relationships are straightforward: one user can create many content items, and one content item can receive many responses. These are essential because they directly support the basic community experience. Other relationships are more complex. For example, categories or tags may become a many-to-many relationship, because one content item can have several tags, and one tag can belong to many content items. Storing several tags as one comma-separated text value would be quicker, but it would make filtering and querying less reliable later. A junction table is more difficult to understand at first, but it supports the functional requirement more properly.
+![Core data relationship diagram](assets/images/core_data_relationship.png)
+
+*Figure 2. A simplified ERD showing users, content items, responses, tags, and the junction table between content and tags.*
 
 This also connects to technical decisions. Since the prototype uses SQLite, the database should be designed in a way that can support clear queries. If the detail page needs to show one content item together with its creator and responses, then the system may need to query more than one table. If users need to browse by category, the category data must be stored in a searchable structure rather than only written into the HTML. In this sense, joins are not just a database exercise. They are what allow the interface to show connected information from different parts of the system.
 
