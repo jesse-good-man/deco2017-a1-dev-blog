@@ -14,6 +14,9 @@ tags:
 After working through application flow, modular structure, and data requirements, I now feel that the prototype is becoming more concrete. Earlier in the project, I mainly thought about what the application should include: pages, cards, forms, responses, and database relationships. At this stage, the more important question is slightly different: which features are actually worth adding, and which ones might make the prototype harder to finish without improving the core experience?
 
 The main functional requirement has not changed. The application should support a focused community workflow where users can browse shared content, open a detailed view, and respond through lightweight interaction. This means any new feature should be judged by whether it strengthens that workflow. If an external API provides useful extra context or helps users make a better decision, then it may be valuable. If it only makes the project look more advanced, then it is probably a distraction.
+![API integration decision map](assets/images/API_Integration_Decision_Map.png)
+
+*Figure 1. A decision map for judging whether an API feature should be included or left out of the A2 prototype.*
 
 This changed how I understand integration. In Week 10, the API examples used weather and geocoding, but the more important lesson was not about weather itself. The important pattern was that a web application can request data from another system, receive structured JSON, process it on the server, and then render something useful for the user. That sounds powerful, but it also creates a new dependency. Unlike local database content, external API data is not fully under my control.
 
