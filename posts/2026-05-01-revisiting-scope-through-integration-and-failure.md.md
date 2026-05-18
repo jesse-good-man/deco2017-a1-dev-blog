@@ -20,7 +20,7 @@ This changed how I understand integration. In Week 10, the API examples used wea
 Because of that, I need to design for failure, not just success. An API request might timeout, return an error, reach a rate limit, or send back data in an unexpected structure. If the prototype depends too heavily on that API, then one external problem could break the user experience. A better decision is to make API integration optional and fail-safe. The core database-driven workflow should still work even if the external feature cannot load.
 
 This also affects technical planning. If I add an API feature, the route should use clear error handling, such as `try/catch`, status checks, and a fallback message. The user should not see a broken page or a confusing blank area. Instead, the interface should explain that the extra information is unavailable while keeping the main content usable. This supports usability because the system still gives feedback, even when something goes wrong.
-![Graceful failure flow](assets/images/Graceful Failure Flow Diagram.png)
+![Graceful failure flow](assets/images/graceful-failure-flow-diagram.png.png)
 
 *Figure 2. A graceful failure flow showing how the prototype can handle external API problems without breaking the core user experience.*
 
